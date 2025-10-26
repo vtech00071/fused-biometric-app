@@ -1,0 +1,386 @@
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+/* ===== CSS Variables (Your Color Palette) ===== */
+:root {
+    --header-height: 3.5rem;
+    
+    /* Colors */
+    --accent-color: #008080; /* Teal */
+    --accent-color-hover: #006666;
+    --text-color: #333;
+    --bg-color: #f4f7f6;     /* Light gray background */
+    --card-bg: #ffffff;      /* White */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    
+    /* Fonts */
+    --body-font: 'Roboto', sans-serif;
+    --title-font: 'Poppins', sans-serif;
+
+    /* Font sizes */
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --normal-font-size: 1rem;
+    
+    /* z-index */
+    --z-fixed: 100;
+}
+
+/* ===== Base Styles ===== */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex; /* Makes the footer stick to the bottom */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--title-font);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+ul {
+    list-style: none;
+}
+
+.main-content {
+    padding: 2rem 1rem;
+    flex-grow: 1; /* Makes content fill available space */
+}
+
+
+
+/* ===== Header & Navbar ===== */
+.main-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: var(--z-fixed);
+}
+
+.navbar {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.nav-logo {
+    font-family: var(--title-font);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-family: var(--body-font);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-color);
+}
+
+
+/* ===== Home Page: Hero Section ===== */
+.hero-section {
+    text-align: center;
+    padding: 6rem 1rem 3rem; /* Extra top padding to clear the fixed header */
+}
+
+.hero-section h1 {
+    font-size: var(--h1-font-size);
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* ===== Home Page: Card Container ===== */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    width: 350px;
+    text-align: center;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 4rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.card h2 {
+    font-size: var(--h2-font-size);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: var(--normal-font-size);
+    color: #666;
+}
+
+
+/* ===== Footer ===== */
+.main-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #e9ecef;
+    color: #666;
+    margin-top: 2rem;
+}
+
+/* ===== Mobile & Tablet Responsive ===== */
+@media screen and (max-width: 768px) {
+    body {
+        /* Extra padding to prevent content from hiding under fixed header */
+        padding-top: var(--header-height); 
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Hides menu off-screen */
+        top: var(--header-height);
+        flex-direction: column;
+        background-color: var(--card-bg);
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Slides menu in */
+    }
+
+    .nav-item {
+        padding: 1rem 0;
+    }
+
+    .hamburger {
+        display: block; /* Shows hamburger icon */
+    }
+
+    /* Hamburger "X" animation */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .hero-section {
+        padding-top: 2rem; /* Reduced padding for mobile */
+    }
+
+    .card {
+        width: 90%; /* Makes cards stack vertically */
+    }
+}
+
+
+/* ===== Verification Page Styles ===== */
+.verification-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 6rem; /* Clear fixed header */
+}
+
+.verification-container h1 {
+    font-size: var(--h1-font-size);
+    margin-bottom: 1rem;
+}
+
+.verification-container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* ===== Image Preview Box ===== */
+.image-preview-box {
+    width: 100%;
+    height: 300px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    margin-bottom: 2rem;
+    overflow: hidden; /* Hides parts of image that don't fit */
+    position: relative;
+}
+
+.placeholder-icon {
+    font-size: 5rem;
+    color: #ddd;
+    transition: opacity 0.3s ease;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scales image to fill box */
+    display: none; /* Hidden by default */
+    position: absolute;
+}
+
+/* ===== Verification Form & Buttons ===== */
+.verification-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates a 2-column grid */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* This hides the default ugly file input */
+.verification-form input[type="file"] {
+    display: none;
+}
+
+/* This is our base button style */
+.btn {
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Primary Button (for main actions) */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    grid-column: 1 / -1; /* Makes this button span both columns */
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+}
+
+/* Secondary Button (for upload/camera) */
+.btn-secondary {
+    background-color: #e9ecef;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #dcdcdc;
+}
+
+/* Adds a small icon margin */
+.btn i {
+    margin-right: 0.5rem;
+}
+
+/* ===== Verification Result Messages ===== */
+#verification-result .message {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+#verification-result .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#verification-result .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Make form single-column on mobile */
+@media screen and (max-width: 480px) {
+    .verification-form {
+        grid-template-columns: 1fr; /* Stacks buttons */
+    }
+
+    .verification-container {
+        padding-top: 2rem;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric System - Home</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-logo">Biometric System</a>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{{ url_for('home') }}" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('face') }}" class="nav-link">Face</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('fingerprint') }}" class="nav-link">Fingerprint</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('register') }}" class="nav-link">Register</a>
+                </li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content" id="home-content">
+        <div class="hero-section">
+            <h1>Fused Multimodal Biometric System</h1>
+            <p>Simulated Face and Fingerprint Verification Using Image Uploads.</p>
+        </div>
+        
+        <div class="card-container">
+            <a href="{{ url_for('face') }}" class="card">
+                <i class="fas fa-face-smile card-icon"></i>
+                <h2>Face Verification</h2>
+                <p>Click to verify your identity using a face image.</p>
+            </a>
+            
+            <a href="{{ url_for('fingerprint') }}" class="card">
+                <i class="fas fa-fingerprint card-icon"></i>
+                <h2>Fingerprint Verification</h2>
+                <p>Click to verify your identity using a fingerprint image.</p>
+            </a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Biometric Prototype Project</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
