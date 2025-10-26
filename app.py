@@ -36,7 +36,7 @@ def init_db():
             f.write("""
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT UNIQUE NOTNULL,
+                username TEXT UNIQUE NOT NULL,  -- <-- THIS IS THE FIX
                 face_hash TEXT NOT NULL,
                 fingerprint_hash TEXT NOT NULL
             );
@@ -150,7 +150,9 @@ def face():
         
         return redirect(url_for('face'))
 
-    return render_template('face.html')
+    return render_template('fingerprint.html') # <-- I also found a bug here. This was wrong.
+    # It should be:
+    # return render_template('face.html')
 
 
 @app.route('/fingerprint', methods=['GET', 'POST'])
